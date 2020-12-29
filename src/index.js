@@ -41,7 +41,8 @@ function Home(){
     <Welcome name='gims'/>
     <Welcome name='dadju'/>
     <Clok/>
-    <Incrementation start={0}/>
+    <Incrementation start={10} step={10}/>
+    <Incrementation start={10}/>
     </div>
 }
 class Incrementation extends React.Component{
@@ -51,7 +52,7 @@ class Incrementation extends React.Component{
         this.timer=null;
     }
     componentDidMount(){
-        window.setInterval(this.inscrement.bind(this),1000)
+        window.setInterval(this.increment.bind(this),1000)
     }
     componentWillUnmount(){
         window.clearInterval(this.timer)
@@ -59,14 +60,21 @@ class Incrementation extends React.Component{
     render(){
        
         return <>
-                <p>l'inscrementation est de {this.state.n}</p>
+                <p>Valeurs est : {this.state.n}</p>
               
         </>
     }
-    inscrement(){
-        this.setState({n:this.state.n +1})
+    increment(){
+        this.setState(function(state,props){
+            return {n:this.state.n +props.step}
+        })
     }
 }
+Incrementation.defaultProps={
+    start:0,
+    step:1
+    }
+
 class Clok extends React.Component{
     constructor(props){
         super(props);
