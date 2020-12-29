@@ -50,14 +50,10 @@ class Clok extends React.Component{
         this.timer=null;
     }
     componentDidMount(){
-        this.timer=window.setInterval(()=>
-            this.tick.bind(this)
-        ={
-
-        },1000)
+        this.timer=window.setInterval(this.tick.bind(this),1000)
     }
     tick(){
-        this.setState={date:new Date()}
+        this.setState({date:new Date()})
     }
     componentWillUnmount(){
         window.clearInterval(this.timer)
