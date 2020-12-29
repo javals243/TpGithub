@@ -41,7 +41,31 @@ function Home(){
     <Welcome name='gims'/>
     <Welcome name='dadju'/>
     <Clok/>
+    <Incrementation start={0}/>
     </div>
+}
+class Incrementation extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={n:props.start};
+        this.timer=null;
+    }
+    componentDidMount(){
+        window.setInterval(this.inscrement.bind(this),1000)
+    }
+    componentWillUnmount(){
+        window.clearInterval(this.timer)
+    }
+    render(){
+       
+        return <>
+                <p>l'inscrementation est de {this.state.n}</p>
+              
+        </>
+    }
+    inscrement(){
+        this.setState({n:this.state.n +1})
+    }
 }
 class Clok extends React.Component{
     constructor(props){
@@ -74,4 +98,6 @@ class Welcome extends React.Component{
     </>
     }
 } 
+
+
 reactDom.render(<Home/>,document.querySelector('#root'))
