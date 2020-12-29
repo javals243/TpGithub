@@ -38,8 +38,8 @@ function WelcomeFunc({name,children}){
 }
 function Home(){
     return <div>
-    <Welcome name='gims'/>
-    <Welcome name='dadju'/>
+    <Welcome name='hey'/>
+    <Welcome name='ca va'/>
     <Clok/>
     <Incrementation start={10} step={10}/>
     <Incrementation start={10}/>
